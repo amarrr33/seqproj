@@ -80,13 +80,16 @@ BACKEND_PID=""
 FRONTEND_PID=""
 
 cleanup() {
+    trap - SIGINT SIGTERM EXIT
     echo ""
     echo "================================================================="
     echo "🛑 Shutting down LifeTrail services..."
     if [ -n "$BACKEND_PID" ]; then
+        pkill -P "$BACKEND_PID" 2>/dev/null || true
         kill "$BACKEND_PID" 2>/dev/null || true
     fi
     if [ -n "$FRONTEND_PID" ]; then
+        pkill -P "$FRONTEND_PID" 2>/dev/null || true
         kill "$FRONTEND_PID" 2>/dev/null || true
     fi
     echo "✓ All processes terminated."
