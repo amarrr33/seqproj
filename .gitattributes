@@ -1,0 +1,10 @@
+# Set default behavior, in case users don't have core.autocrlf set.
+* text=auto
+
+# Ensure shell scripts always preserve LF line endings across all platforms
+*.sh text eol=lf
+
+# Binary files
+*.db binary
+*.png binary
+*.docx binary
